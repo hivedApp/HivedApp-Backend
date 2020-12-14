@@ -1,0 +1,1 @@
+{"lastDeploymentHandler":"com.hived.Hello","lastInvokeHandler":null,"handlerMetadata":{"com.hived.Hello":{"deployment":{"regionId":"ap-south-1","awsLambdaFunctionName":"HelloFunction","awsIamRoleName":"devRole","awsS3BucketName":"my-profile-image","memory":0,"timeout":0},"invoke":null}},"lastInvokedHandlerDeployed":false}
