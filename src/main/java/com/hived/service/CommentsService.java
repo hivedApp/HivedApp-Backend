@@ -21,14 +21,14 @@ public class CommentsService {
 	static AmazonDynamoDB client = AmazonDynamoDBClientBuilder.standard().build();
 	static DynamoDB dynamoDB = new DynamoDB(client);
 
-	static String tableName = "hived";
+	static String tableName = "hivd";
 
 	public int saveComments(CommentsPojo commentsPojo) {
 		Table table = dynamoDB.getTable(tableName);
 		int success = 0;
 		try {
 			Item item = new Item().withPrimaryKey("PK", commentsPojo.getCommentId())
-					.withInt("SK", commentsPojo.getProductId()).withString("entityType", commentsPojo.getEntity())
+					.withString("SK", commentsPojo.getProductId()).withString("entityType", commentsPojo.getEntityType())
 					.withString("commentsText", commentsPojo.getCommentsText())
 					.withString("actionType", commentsPojo.getActionType())
 					.withString("creationDate", commentsPojo.getCreationDate());
@@ -58,9 +58,9 @@ public class CommentsService {
 			while (iter.hasNext()) {
 				Item item = iter.next();
 				CommentsPojo commentsPojo = new CommentsPojo();
-				commentsPojo.setCommentId(Integer.parseInt(item.getString("PK")));
-				commentsPojo.setProductId(Integer.parseInt(item.getString("SK")));
-				commentsPojo.setEntity(item.getString("entityType"));
+				commentsPojo.setCommentId(item.getString("PK"));
+				commentsPojo.setProductId(item.getString("SK"));
+				commentsPojo.setEntityType(item.getString("entityType"));
 				commentsPojo.setCommentsText(item.getString("commentsText"));
 				commentsPojo.setActionType(item.getString("actionType"));
 				commentsPojo.setCreationDate(item.getString("creationDate"));
@@ -89,9 +89,9 @@ public class CommentsService {
 			while (iter.hasNext()) {
 				Item item = iter.next();
 				CommentsPojo commentsPojo = new CommentsPojo();
-				commentsPojo.setCommentId(Integer.parseInt(item.getString("PK")));
-				commentsPojo.setProductId(Integer.parseInt(item.getString("SK")));
-				commentsPojo.setEntity(item.getString("entityType"));
+				commentsPojo.setCommentId(item.getString("PK"));
+				commentsPojo.setProductId(item.getString("SK"));
+				commentsPojo.setEntityType(item.getString("entityType"));
 				commentsPojo.setCreationDate(item.getString("creationDate"));
 				commentsPojoList.add(commentsPojo);
 			}

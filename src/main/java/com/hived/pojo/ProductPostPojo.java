@@ -6,12 +6,12 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBRangeKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 
-@DynamoDBTable(tableName = "hiveds")
+@DynamoDBTable(tableName = "hivd")
 public class ProductPostPojo {
 
 	private String PK;
 	private String SK;
-	private String entity;
+	private String entityType;
 	private String reviewId;
 	private String title;
 	private String sub_title;
@@ -19,12 +19,11 @@ public class ProductPostPojo {
 	private String profile_url;
 	private String username;
 	private List<String> images;
-	private Integer userId;
+	private String userId;
 	private String creationDate;
 	private String paginationValue1;
 	private String paginationValue2;
 
-	@DynamoDBHashKey(attributeName = "PK")
 	public String getPK() {
 		return PK;
 	}
@@ -42,14 +41,15 @@ public class ProductPostPojo {
 		this.SK = SK;
 	}
 
-	public String getEntity() {
-		return entity;
+	public String getEntityType() {
+		return entityType;
 	}
 
-	public void setEntity(String entity) {
-		this.entity = entity;
+	public void setEntityType(String entityType) {
+		this.entityType = entityType;
 	}
 
+	@DynamoDBHashKey(attributeName = "PK")
 	public String getReviewId() {
 		return reviewId;
 	}
@@ -106,11 +106,11 @@ public class ProductPostPojo {
 		this.images = images;
 	}
 
-	public Integer getUserId() {
+	public String getUserId() {
 		return userId;
 	}
 
-	public void setUserId(Integer userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 

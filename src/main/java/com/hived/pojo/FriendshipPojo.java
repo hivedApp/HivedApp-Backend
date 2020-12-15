@@ -5,15 +5,15 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBRangeKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 
-@DynamoDBTable(tableName = "hiveds")
+@DynamoDBTable(tableName = "hivd")
 public class FriendshipPojo {
 
 	private String PK;
 	private String SK;
 	private String entityType;
-	private Integer friendshipId;
-	private Integer followingUser;
-	private Integer followedUser;
+	private String friendshipId;
+	private String followingUser;
+	private String followedUser;
 	private String creationDate;
 
 	@DynamoDBHashKey(attributeName = "PK")
@@ -43,27 +43,27 @@ public class FriendshipPojo {
 		this.entityType = entityType;
 	}
 
-	public Integer getFriendshipId() {
+	public String getFriendshipId() {
 		return friendshipId;
 	}
 
-	public void setFriendshipId(Integer friendshipId) {
+	public void setFriendshipId(String friendshipId) {
 		this.friendshipId = friendshipId;
 	}
 
-	public Integer getFollowingUser() {
+	public String getFollowingUser() {
 		return followingUser;
 	}
 
-	public void setFollowingUser(Integer followingUser) {
+	public void setFollowingUser(String followingUser) {
 		this.followingUser = followingUser;
 	}
 
-	public Integer getFollowedUser() {
+	public String getFollowedUser() {
 		return followedUser;
 	}
 
-	public void setFollowedUser(Integer followedUser) {
+	public void setFollowedUser(String followedUser) {
 		this.followedUser = followedUser;
 	}
 

@@ -10,10 +10,8 @@ com\hived\handler\GetProductPostHandler.class
 com\hived\pojo\HivedUserPojo.class
 com\hived\handler\CreateProductPostHandler.class
 com\hived\response\ProductPostReviewResponse.class
-com\hived\config\DynamoDbConfiguratio.class
 com\hived\pojo\ProductPojo.class
 com\hived\service\FriendshipService.class
-com\hived\CreateUser.class
 com\hived\handler\GetFriendshipHandler.class
 com\hived\pojo\CommentsPojo.class
 com\hived\request\Request.class

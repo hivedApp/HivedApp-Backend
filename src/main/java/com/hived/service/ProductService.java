@@ -24,7 +24,7 @@ public class ProductService {
 	static AmazonDynamoDB client = AmazonDynamoDBClientBuilder.standard().build();
 	static DynamoDB dynamoDB = new DynamoDB(client);
 
-	static String tableName = "hiveds";
+	static String tableName = "hivd";
 
 	public String saveProduct(ProductPojo productPojo) {
 		Table table = dynamoDB.getTable(tableName);
@@ -51,7 +51,7 @@ public class ProductService {
 					.withString("product_saller_title", productPojo.getProduct_saller_title())
 					.withString("product_seller_description", productPojo.getProduct_seller_description())
 					.withInt("product_seller_rating", productPojo.getProduct_seller_rating())
-					.withString("CreationDate", dateString);
+					.withString("creationDate", dateString);
 			table.putItem(item);
 			success = uuid.toString();
 		} catch (Exception e) {
@@ -67,7 +67,7 @@ public class ProductService {
 		Table table = dynamoDB.getTable(tableName);
 		String success = null;
 		UpdateItemSpec updateItemSpec = new UpdateItemSpec()
-				.withPrimaryKey("PK", productPojo.getProductId(), "SK", productPojo.getUserId().toString())
+				.withPrimaryKey("PK", productPojo.getProductId(), "SK", productPojo.getUserId())
 				.withUpdateExpression(
 						"set product_title = :ptitle, product_description=:pdesc, product_rating=:prating")
 				.withValueMap(new ValueMap().withString(":ptitle", productPojo.getProduct_title())
@@ -93,7 +93,7 @@ public class ProductService {
 		Table table = dynamoDB.getTable(tableName);
 		String success = null;
 		UpdateItemSpec updateItemSpec = new UpdateItemSpec()
-				.withPrimaryKey("PK", productPojo.getProductId(), "SK", productPojo.getUserId().toString())
+				.withPrimaryKey("PK", productPojo.getProductId(), "SK", productPojo.getUserId())
 				.withUpdateExpression(
 						"set product_seller = :pstitle, product_branch=:psbranch, product_sales_person=:psperson, product_saller_title=:pstitle, product_seller_rating=:psrating, product_seller_description=:psdesc")
 				.withValueMap(new ValueMap().withString(":pstitle", productPojo.getProduct_seller())

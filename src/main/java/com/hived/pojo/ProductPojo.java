@@ -7,14 +7,14 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBRangeKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 
-@DynamoDBTable(tableName = "hiveds")
+@DynamoDBTable(tableName = "hivd")
 public class ProductPojo {
 
 	private String PK;
 	private String SK;
 	private String entityType;
 	private String productId;
-	private Integer userId;
+	private String userId;
 	private String userName;
 	private String product_select;
 	private String product_brand;
@@ -68,11 +68,11 @@ public class ProductPojo {
 		this.productId = productId;
 	}
 
-	public Integer getUserId() {
+	public String getUserId() {
 		return userId;
 	}
 
-	public void setUserId(Integer userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 

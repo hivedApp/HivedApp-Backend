@@ -21,17 +21,17 @@ public class FriendshipService {
 	static AmazonDynamoDB client = AmazonDynamoDBClientBuilder.standard().build();
 	static DynamoDB dynamoDB = new DynamoDB(client);
 
-	static String tableName = "hived";
+	static String tableName = "hivd";
 
 	public int saveFriendship(FriendshipPojo friendshipPojo) {
 		Table table = dynamoDB.getTable(tableName);
 		int success = 0;
 		try {
 			Item item = new Item().withPrimaryKey("PK", friendshipPojo.getFriendshipId())
-					.withInt("SK", friendshipPojo.getFollowedUser())
+					.withString("SK", friendshipPojo.getFollowedUser())
 					.withString("entityType", friendshipPojo.getEntityType())
-					.withInt("followingUser", friendshipPojo.getFollowingUser())
-					.withInt("followedUser", friendshipPojo.getFollowedUser())
+					.withString("followingUser", friendshipPojo.getFollowingUser())
+					.withString("followedUser", friendshipPojo.getFollowedUser())
 					.withString("creationDate", friendshipPojo.getCreationDate());
 			table.putItem(item);
 			success = 1;
@@ -59,10 +59,10 @@ public class FriendshipService {
 			while (iter.hasNext()) {
 				Item item = iter.next();
 				FriendshipPojo friendshipPojo = new FriendshipPojo();
-				friendshipPojo.setFriendshipId(Integer.parseInt(item.getString("PK")));
+				friendshipPojo.setFriendshipId(item.getString("PK"));
 				friendshipPojo.setEntityType(item.getString("entityType"));
-				friendshipPojo.setFollowedUser(item.getInt("followedUser"));
-				friendshipPojo.setFollowingUser(item.getInt("followingUser"));
+				friendshipPojo.setFollowedUser(item.getString("followedUser"));
+				friendshipPojo.setFollowingUser(item.getString("followingUser"));
 				friendshipPojo.setCreationDate(item.getString("creationDate"));
 				return friendshipPojo;
 			}
@@ -89,9 +89,9 @@ public class FriendshipService {
 			while (iter.hasNext()) {
 				Item item = iter.next();
 				FriendshipPojo friendshipPojo = new FriendshipPojo();
-				friendshipPojo.setFriendshipId(item.getInt("PK"));
-				friendshipPojo.setFollowedUser(item.getInt("SK"));
-				friendshipPojo.setFollowingUser(item.getInt("followingUser"));
+				friendshipPojo.setFriendshipId(item.getString("PK"));
+				friendshipPojo.setFollowedUser(item.getString("SK"));
+				friendshipPojo.setFollowingUser(item.getString("followingUser"));
 				friendshipPojo.setEntityType(item.getString("entityType"));
 				friendshipPojo.setCreationDate(item.getString("creationDate"));
 				friendshipPojoList.add(friendshipPojo);

@@ -5,36 +5,26 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
+import com.amazonaws.services.dynamodbv2.datamodeling.PaginatedScanList;
 import com.amazonaws.services.dynamodbv2.datamodeling.ScanResultPage;
 import com.amazonaws.services.dynamodbv2.document.DynamoDB;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
-import com.hived.config.DynamoDbConfiguratio;
 import com.hived.pojo.ProductPostPojo;
 
 public class ProductPostService {
 
 	static AmazonDynamoDB client = AmazonDynamoDBClientBuilder.standard().build();
 	static DynamoDB dynamoDB = new DynamoDB(client);
-    static HttpServletRequest req;
-	static String tableName = "hiveds";
+	static String tableName = "hivd";
 
 	public List<ProductPostPojo> getReviewListByUserId(String userId, String pValue1,String pValue2) {
-		// AmazonDynamoDB clien;
-		// BasicAWSCredentials awsCreds = new
-		// BasicAWSCredentials("AKIA2WSH67LRM27Z25E7",
-		// "jWGoShMWcjBTo8AkYLsb6pL8vJKXnRppwYbDA5mb");
-		// clien = AmazonDynamoDBClient.builder().withCredentials(new
-		// AWSStaticCredentialsProvider(awsCreds))
-		// .withRegion(Regions.AP_SOUTH_1).build();
 		
 		List<ProductPostPojo> list=new ArrayList<ProductPostPojo>();
-		DynamoDbConfiguratio dbConfig = new DynamoDbConfiguratio();
-		DynamoDBMapper mapper = new DynamoDBMapper(dbConfig.buildAmazonDynamoDB());
+		DynamoDBMapper mapper = new DynamoDBMapper(client);
 		Map<String, AttributeValue> eav = new HashMap<String, AttributeValue>();
 		eav.put(":val1", new AttributeValue().withS("product_post"));
 		eav.put(":val2", new AttributeValue().withS(userId));
@@ -46,8 +36,8 @@ public class ProductPostService {
 		scanResult= mapper.scanPage(ProductPostPojo.class, scanExpression);
 		for (ProductPostPojo p : scanResult.getResults()) {
 			ProductPostPojo pojo=new ProductPostPojo();
-			pojo.setReviewId(p.getPK());
-			pojo.setUserId(Integer.parseInt(p.getSK()));
+			pojo.setReviewId(p.getReviewId());
+			pojo.setUserId(p.getSK());
 			pojo.setTitle(p.getTitle());
 			pojo.setSub_title(p.getSub_title());
 			pojo.setRating(p.getRating());
@@ -72,8 +62,8 @@ public class ProductPostService {
 			scanResult= mapper.scanPage(ProductPostPojo.class, scanExpression);
 			for (ProductPostPojo p : scanResult.getResults()) {
 				ProductPostPojo pojo=new ProductPostPojo();
-				pojo.setReviewId(p.getPK());
-				pojo.setUserId(Integer.parseInt(p.getSK()));
+				pojo.setReviewId(p.getReviewId());
+				pojo.setUserId(p.getSK());
 				pojo.setTitle(p.getTitle());
 				pojo.setSub_title(p.getSub_title());
 				pojo.setRating(p.getRating());
@@ -92,5 +82,28 @@ public class ProductPostService {
 			}
 		}
 		return list;
+	}
+	
+	public static void main(String[] args) {
+		final DynamoDBMapper mapper = new DynamoDBMapper(client);
+
+		// Using 'PaginatedScanList'
+		final DynamoDBScanExpression paginatedScanListExpression = new DynamoDBScanExpression()
+		        .withLimit(5);
+		paginatedScanListExpression.withFilterExpression("entityType=product_post");
+		final PaginatedScanList<ProductPostPojo> paginatedList = mapper.scan(ProductPostPojo.class, paginatedScanListExpression);
+		paginatedList.forEach(System.out::println);
+
+		System.out.println();
+		// using 'ScanResultPage'
+		final DynamoDBScanExpression scanPageExpression = new DynamoDBScanExpression()
+		        .withLimit(5);
+		do {
+		    ScanResultPage<ProductPostPojo> scanPage = mapper.scanPage(ProductPostPojo.class, scanPageExpression);
+		    scanPage.getResults().forEach(System.out::println);
+		    System.out.println("LastEvaluatedKey=" + scanPage.getLastEvaluatedKey());
+		    scanPageExpression.setExclusiveStartKey(scanPage.getLastEvaluatedKey());
+
+		} while (scanPageExpression.getExclusiveStartKey() != null);
 	}
 }

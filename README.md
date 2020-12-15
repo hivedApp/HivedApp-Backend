@@ -98,14 +98,11 @@ stack: megthink-mobile-dev
 api keys:
   None
 endpoints:
-  GET - https://xxxxxxxxx.execute-api.us-east-1.amazonaws.com/dev/users
-  GET - https://xxxxxxxxx.execute-api.us-east-1.amazonaws.com/dev/users/{id}
-  POST - https://xxxxxxxxx.execute-api.us-east-1.amazonaws.com/dev/users
-  DELETE - https://xxxxxxxxx.execute-api.us-east-1.amazonaws.com/dev/users/{id}
+  POST - https://zo788s9ro0.execute-api.ap-south-1.amazonaws.com/devhome
+  POST - https://zo788s9ro0.execute-api.ap-south-1.amazonaws.com/devhome/createproduct
 functions:
-  listUsers: megthink-mobile-dev-listUsers
-  getUser: megthink-mobile-dev-getUser
-  createUser: megthink-mobile-dev-createUser
-  deleteuser: megthink-mobile-dev-deleteUser
+  createUser: createUserFunction
+  getHomePageDetails: homePageFunction
+  createProudctReviewDetails: createProductFunction
 ```
 

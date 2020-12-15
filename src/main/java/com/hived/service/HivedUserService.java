@@ -19,7 +19,7 @@ public class HivedUserService {
 	static AmazonDynamoDB client = AmazonDynamoDBClientBuilder.standard().build();
 	static DynamoDB dynamoDB = new DynamoDB(client);
 
-	static String tableName = "hived";
+	static String tableName = "hivd";
 
 	public int saveHivedUser(HivedUserPojo hivedUserPojo) {
 		Table table = dynamoDB.getTable(tableName);
@@ -63,7 +63,7 @@ public class HivedUserService {
 			while (iter.hasNext()) {
 				Item item = iter.next();
 				HivedUserPojo hivedUserPojo = new HivedUserPojo();
-				hivedUserPojo.setUserId(Integer.parseInt(item.getString("PK")));
+				hivedUserPojo.setUserId(item.getString("PK"));
 				hivedUserPojo.setEntityType(item.getString("entityType"));
 				hivedUserPojo.setFirstName(item.getString("firstName"));
 				hivedUserPojo.setLastName(item.getString("lastName"));
