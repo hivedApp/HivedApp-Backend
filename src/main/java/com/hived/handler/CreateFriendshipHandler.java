@@ -12,6 +12,7 @@ public class CreateFriendshipHandler {
 	private final Logger logger = Logger.getLogger(this.getClass());
 
 	public Object handleRequest(Request request, Context context) {
+		
 		FriendshipPojo friendshipPojo = null;
 		Response response = null;
 		try {

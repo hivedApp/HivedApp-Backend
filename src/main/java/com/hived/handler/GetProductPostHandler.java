@@ -103,6 +103,7 @@ public class GetProductPostHandler {
 //				pval2=review.getPaginationValue2();
 //				ReviewResponseList.add(hivedUserResponse);
 //			}
+	
 //			reviewResponse.setProductPostReviewResponse(ReviewResponseList);
 //			reviewResponse.setPaginationKeyValue1(pval1);
 //			reviewResponse.setPaginationKeyValue2(pval2);

@@ -211,5 +211,4 @@ public class ProductPojo {
 	public void setAddProductPhotos(List<String> addProductPhotos) {
 		this.addProductPhotos = addProductPhotos;
 	}
-
 }

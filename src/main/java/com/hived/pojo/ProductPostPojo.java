@@ -137,5 +137,4 @@ public class ProductPostPojo {
 	public void setPaginationValue2(String paginationValue2) {
 		this.paginationValue2 = paginationValue2;
 	}
-
 }

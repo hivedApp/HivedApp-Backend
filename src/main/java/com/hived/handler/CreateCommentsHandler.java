@@ -12,6 +12,7 @@ public class CreateCommentsHandler {
 	private final Logger logger = Logger.getLogger(this.getClass());
 
 	public Object handleRequest(Request request, Context context) {
+		
 		CommentsPojo commentsPojo = null;
 		Response response = null;
 		try {

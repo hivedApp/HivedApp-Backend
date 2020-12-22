@@ -20,5 +20,4 @@ public class Images {
 	public void setType(String type) {
 		this.type = type;
 	}
-
 }

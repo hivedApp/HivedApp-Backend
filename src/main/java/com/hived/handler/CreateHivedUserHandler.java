@@ -12,6 +12,7 @@ public class CreateHivedUserHandler {
 	private final Logger logger = Logger.getLogger(this.getClass());
 
 	public Object handleRequest(Request request, Context context) {
+		
 		HivedUserPojo hivedUserPojo = null;
 		Response response = null;
 		try {

@@ -20,8 +20,8 @@ public class GetHivedUserHandler {
 			return "Exception " + ex;
 		}
 	}
-	public static void main(String[] args) {
-		HivedUserPojo hivedUserPojo = new HivedUserService().getHivedUserByUserId("857e84a5-0c09-4ff7-82a7-c34215c0f785");
-		System.out.println(hivedUserPojo);
-	}
+//	public static void main(String[] args) {
+//		HivedUserPojo hivedUserPojo = new HivedUserService().getHivedUserByUserId("857e84a5-0c09-4ff7-82a7-c34215c0f785");
+//		System.out.println(hivedUserPojo);
+//	}
 }

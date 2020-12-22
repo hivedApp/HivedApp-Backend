@@ -10,6 +10,7 @@ public class CreateProductPostHandler {
 	private final Logger logger = Logger.getLogger(this.getClass());
 
 	public Object handleRequest(Request request, Context context) {
+		
 		Response response = null;
 		try {
 			int success = 1;

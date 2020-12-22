@@ -74,5 +74,4 @@ public class FriendshipPojo {
 	public void setCreationDate(String creationDate) {
 		this.creationDate = creationDate;
 	}
-
 }

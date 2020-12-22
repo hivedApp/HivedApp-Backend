@@ -153,4 +153,5 @@ public class HivedUserPojo {
 	public void setUserType(String userType) {
 		this.userType = userType;
 	}
+	
 }

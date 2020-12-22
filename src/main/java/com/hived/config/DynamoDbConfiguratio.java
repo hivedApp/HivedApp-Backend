@@ -54,6 +54,7 @@
 //	public DynamoDBMapper dynamoDBMapper() {
 //		return new DynamoDBMapper(buildAmazonDynamoDB());
 //	}
+
 //
 //	public AmazonDynamoDB buildAmazonDynamoDB() {
 //		AmazonDynamoDB client;

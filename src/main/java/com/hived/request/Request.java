@@ -77,4 +77,5 @@ public class Request {
 	public void setCommentsPojo(CommentsPojo commentsPojo) {
 		this.commentsPojo = commentsPojo;
 	}
+	
 }

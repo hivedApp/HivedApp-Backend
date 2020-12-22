@@ -87,4 +87,5 @@ public class ProductPostReviewResponse {
 	public void setImages(List<Images> images) {
 		this.images = images;
 	}
+	
 }

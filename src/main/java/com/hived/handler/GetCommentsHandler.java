@@ -9,6 +9,7 @@ public class GetCommentsHandler {
 	private final Logger logger = Logger.getLogger(this.getClass());
 
 	public Object handleRequest(Request request, Context context) {
+		
 		try {
 			String productId = request.getId();
 			return productId;

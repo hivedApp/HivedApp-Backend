@@ -16,6 +16,7 @@ public class CreateProductHandler {
 	private final Logger logger = Logger.getLogger(this.getClass());
 
 	public Object handleRequest(Request request, Context context) {
+		
 		ProductPojo productPojo = null;
 		Response response = null;
 		try {
