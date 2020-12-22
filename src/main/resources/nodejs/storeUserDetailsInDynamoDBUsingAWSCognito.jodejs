@@ -61,5 +61,5 @@ exports.handler = async (event, context) => {
 /* must configure in function environment
 set environment value key value pair below 
 REGION : ap-south-1
-TABLE_NAME : hiveds
+TABLE_NAME : hivd
 */

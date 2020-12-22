@@ -1,6 +1,7 @@
 package com.hived.handler;
 
 import com.amazonaws.services.lambda.runtime.Context;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hived.pojo.Images;
 import com.hived.pojo.ProductPostPojo;
 import com.hived.request.Request;
@@ -70,8 +71,8 @@ public class GetProductPostHandler {
 //	public static void main(String[] args) {
 //		try {
 //		String uId = "12";
-//		String pValue1 = "";
-//		String pValue2 = "";
+//		String pValue1 = "12";
+//		String pValue2 = "22";
 //		List<ProductPostPojo> listReview = new ProductPostService().getReviewListByUserId(uId, pValue1, pValue2);
 //		List<ProductPostReviewResponse> ReviewResponseList = new ArrayList<ProductPostReviewResponse>();
 //		Response reviewResponse = new Response();

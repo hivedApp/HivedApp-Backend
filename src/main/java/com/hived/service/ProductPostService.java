@@ -9,7 +9,6 @@ import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
-import com.amazonaws.services.dynamodbv2.datamodeling.PaginatedScanList;
 import com.amazonaws.services.dynamodbv2.datamodeling.ScanResultPage;
 import com.amazonaws.services.dynamodbv2.document.DynamoDB;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
@@ -82,28 +81,5 @@ public class ProductPostService {
 			}
 		}
 		return list;
-	}
-	
-	public static void main(String[] args) {
-		final DynamoDBMapper mapper = new DynamoDBMapper(client);
-
-		// Using 'PaginatedScanList'
-		final DynamoDBScanExpression paginatedScanListExpression = new DynamoDBScanExpression()
-		        .withLimit(5);
-		paginatedScanListExpression.withFilterExpression("entityType=product_post");
-		final PaginatedScanList<ProductPostPojo> paginatedList = mapper.scan(ProductPostPojo.class, paginatedScanListExpression);
-		paginatedList.forEach(System.out::println);
-
-		System.out.println();
-		// using 'ScanResultPage'
-		final DynamoDBScanExpression scanPageExpression = new DynamoDBScanExpression()
-		        .withLimit(5);
-		do {
-		    ScanResultPage<ProductPostPojo> scanPage = mapper.scanPage(ProductPostPojo.class, scanPageExpression);
-		    scanPage.getResults().forEach(System.out::println);
-		    System.out.println("LastEvaluatedKey=" + scanPage.getLastEvaluatedKey());
-		    scanPageExpression.setExclusiveStartKey(scanPage.getLastEvaluatedKey());
-
-		} while (scanPageExpression.getExclusiveStartKey() != null);
 	}
 }
