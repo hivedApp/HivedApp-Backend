@@ -1,15 +1,19 @@
 com\hived\handler\CreateProductHandler.class
 com\hived\handler\GetHivedUserHandler.class
 com\hived\service\HivedUserService.class
+com\hived\handler\GetProductPostByUserIdHandler.class
 com\hived\pojo\ProductPostPojo.class
 com\hived\service\ProductService.class
 com\hived\handler\CreateFriendshipHandler.class
+com\hived\response\ProductResponse.class
 com\hived\handler\CreateCommentsHandler.class
 com\hived\handler\CreateHivedUserHandler.class
 com\hived\handler\GetProductPostHandler.class
 com\hived\pojo\HivedUserPojo.class
+com\hived\presignedURL\GeneratePresignedURL.class
 com\hived\handler\CreateProductPostHandler.class
 com\hived\response\ProductPostReviewResponse.class
+com\hived\handler\GetProductHandler.class
 com\hived\pojo\ProductPojo.class
 com\hived\service\FriendshipService.class
 com\hived\handler\GetFriendshipHandler.class
@@ -20,4 +24,5 @@ com\hived\pojo\Images.class
 com\hived\response\Response.class
 com\hived\service\ProductPostService.class
 com\hived\handler\GetCommentsHandler.class
+com\hived\response\ProductPostResponse.class
 com\hived\pojo\FriendshipPojo.class

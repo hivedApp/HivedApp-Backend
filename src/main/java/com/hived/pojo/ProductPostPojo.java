@@ -17,7 +17,7 @@ public class ProductPostPojo {
 	private String sub_title;
 	private String rating;
 	private String profile_url;
-	private String username;
+	private String userName;
 	private List<String> images;
 	private String userId;
 	private String creationDate;
@@ -90,12 +90,12 @@ public class ProductPostPojo {
 		this.profile_url = profile_url;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public List<String> getImages() {

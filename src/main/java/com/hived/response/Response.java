@@ -10,6 +10,7 @@ public class Response {
 	private String product_seller;
 	private String error;
 	private String productId;
+	private List<String> preSignedURL;
 
 	public String getPaginationKeyValue1() {
 		return paginationKeyValue1;
@@ -58,4 +59,13 @@ public class Response {
 	public void setProductId(String productId) {
 		this.productId = productId;
 	}
+
+	public List<String> getPreSignedURL() {
+		return preSignedURL;
+	}
+
+	public void setPreSignedURL(List<String> preSignedURL) {
+		this.preSignedURL = preSignedURL;
+	}
+
 }
